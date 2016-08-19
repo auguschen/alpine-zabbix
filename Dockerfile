@@ -15,7 +15,7 @@ RUN apk add zabbix zabbix-mysql zabbix-webif zabbix-setup && rm /var/www/localho
 # scripts will added in next version.
 
 # change php configuration
-RUN sed -i 's/max_execution_time = 30/max_execution_time = 600/g' /etc/php5/php.ini && sed -i 's/expose_php = On/expose_php = Off/g' /etc/php5/php.ini && sed -i 's/date.timezone = UTC/date.timezone = PRC/g' /etc/php5/php.ini && sed -i 's/post_max_size = 8M/post_max_size = 32M/g' /etc/php5/php.ini && sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 16M/g' /etc/php5/php.ini && sed -i 's/memory_limit = 128M／memory_limit = 256M/g' /etc/php5/php.ini && sed -i 's/max_input_time = 60/max_input_time = 600/g' /etc/php5/php.ini
+RUN sed -i 's/max_execution_time = 30/max_execution_time = 600/g' /etc/php5/php.ini && sed -i 's/expose_php = On/expose_php = Off/g' /etc/php5/php.ini && sed -i 's/date.timezone = UTC/date.timezone = PRC/g' /etc/php5/php.ini && sed -i 's/post_max_size = 8M/post_max_size = 32M/g' /etc/php5/php.ini && sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 16M/g' /etc/php5/php.ini && sed -i 's/memory_limit = 128M/memory_limit = 256M/g' /etc/php5/php.ini && sed -i 's/max_input_time = 60/max_input_time = 600/g' /etc/php5/php.ini
 
 # change zabbix server configuration. 
 # the parameters are fixed, need replced by environment vars in next version.
