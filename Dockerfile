@@ -24,6 +24,7 @@ RUN sed -i 's/#   include "mod_fastcgi.conf"/   include "mod_fastcgi.conf"/g' /e
 # monitor using SNMP
 RUN apk add net-snmp net-snmp-tools
 
-EXPOSE 80 443 10051 # 10050
+EXPOSE 80 443 10051 
+# 10050
 
 CMD su zabbix -p -c /usr/sbin/zabbix_server && /usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf
