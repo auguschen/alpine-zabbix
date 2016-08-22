@@ -24,7 +24,11 @@ RUN sed -i 's/#   include "mod_fastcgi.conf"/   include "mod_fastcgi.conf"/g' /e
 # monitor using SNMP
 RUN apk add net-snmp net-snmp-tools
 
+# new startup script
+RUN echo  "#!/bin/sh" > /usr/bin/startservice.sh && echo  "su zabbix -p -c /usr/sbin/zabbix_server" >> /usr/bin/startservice.sh && echo "/usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf" >> /usr/bin/startservice.sh && chmod +x /usr/bin/startservice.sh
 EXPOSE 80 443 10051 
 # 10050
 
-CMD su zabbix -p -c /usr/sbin/zabbix_server && /usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf
+# CMD su zabbix -p -c /usr/sbin/zabbix_server && /usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf
+# ENTRYPOINT "su zabbix -p -c /usr/sbin/zabbix_server" && "/usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf"
+ENTRYPOINT /usr/bin/startservice.sh
