@@ -33,5 +33,5 @@ EXPOSE 80 443 10051
 
 # CMD su zabbix -p -c /usr/sbin/zabbix_server && /usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf
 # ENTRYPOINT "su zabbix -p -c /usr/sbin/zabbix_server" && "/usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf"
-# ENTRYPOINT /usr/bin/startservice.sh
-CMD /usr/bin/startservice.sh
+ENTRYPOINT /usr/bin/startservice.sh
+# CMD /usr/bin/startservice.sh
