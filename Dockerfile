@@ -27,7 +27,7 @@ RUN sed -i 's/#   include "mod_fastcgi.conf"/   include "mod_fastcgi.conf"/g' /e
 RUN sed -i '/FpingLocation=/a\FpingLocation=/usr/sbin/fping' /etc/zabbix/zabbix_server.conf && mkdir -p /run/lighttpd && chown -R lighttpd /run/lighttpd && rm /var/www/localhost/htdocs -R && ln -s /usr/share/webapps/zabbix /var/www/localhost/htdocs && chown -R lighttpd /usr/share/webapps/zabbix/conf && addgroup zabbix readproc && chown -R zabbix /var/log/zabbix && chown -R zabbix /var/run/zabbix
 
 # new startup script
-RUN echo  "#!/bin/sh" > /usr/bin/startservice.sh && echo  "su zabbix -s /bin/sh -p -c /usr/sbin/zabbix_server" >> /usr/bin/startservice.sh && echo "/usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf" >> /usr/bin/startservice.sh && chmod +x /usr/bin/startservice.sh
+RUN echo  "#!/bin/sh" > /usr/bin/startservice.sh && echo  "su zabbix -s /bin/sh -p -c /usr/sbin/zabbix_server" >> /usr/bin/startservice.sh && echo "/usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf" >> /usr/bin/startservice.sh && chmod +x /usr/bin/startservice.sh
 EXPOSE 80 443 10051 
 # 10050
 
