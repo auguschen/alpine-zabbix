@@ -1,3 +1,3 @@
 #!/bin/sh
-su zabbix -s /bin/sh -p -c /usr/sbin/zabbix_server
-/usr/sbin/lighttpd -D -f /etc/lighttpd/lighttpd.conf
+/usr/sbin/httpd
+su -p -s /bin/sh zabbix -c "/usr/sbin/zabbix_server -f"
